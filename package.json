@@ -1,0 +1,26 @@
+{
+  "devDependencies": {
+    "@types/node": "26.6.2",
+    "typescript": "6.0.3"
+  },
+  "engines": {
+    "node": "26.10.0",
+    "npm": "11.19.1"
+  },
+  "license": "MIT",
+  "name": "fairforge-public-verifier-source",
+  "packageManager": "npm@11.19.1",
+  "private": true,
+  "scripts": {
+    "build": "npm run build --workspace=@fairforge/verifier-app",
+    "check:pack": "npm run build --workspace=@fairforge/verifier && node scripts/frontend-pack.mjs",
+    "test": "node --test scripts/frontend-boundaries.test.mjs && node scripts/frontend-boundaries.mjs && npm test --workspace=@fairforge/verifier",
+    "typecheck": "npm run build --workspace=@fairforge/verifier && npm run typecheck --workspaces"
+  },
+  "type": "module",
+  "version": "0.1.0",
+  "workspaces": [
+    "packages/verifier",
+    "apps/verifier"
+  ]
+}

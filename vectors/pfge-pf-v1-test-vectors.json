@@ -1,0 +1,5637 @@
+{
+  "clientSeedValidationVectors": [
+    {
+      "expected": {
+        "reason": null,
+        "valid": true
+      },
+      "id": "CS-01",
+      "note": "default 16-byte hex seed",
+      "value": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+      "valueCodePoints": null,
+      "valueUtf8Hex": "3566326330613931653764333462363861306331663239653364376238613634"
+    },
+    {
+      "expected": {
+        "reason": null,
+        "valid": true
+      },
+      "id": "CS-02",
+      "note": "ASCII",
+      "value": "lucky-seed-42",
+      "valueCodePoints": [
+        "U+006C",
+        "U+0075",
+        "U+0063",
+        "U+006B",
+        "U+0079",
+        "U+002D",
+        "U+0073",
+        "U+0065",
+        "U+0065",
+        "U+0064",
+        "U+002D",
+        "U+0034",
+        "U+0032"
+      ],
+      "valueUtf8Hex": "6c75636b792d736565642d3432"
+    },
+    {
+      "expected": {
+        "reason": null,
+        "valid": true
+      },
+      "id": "CS-03",
+      "note": "NFC, multi-byte",
+      "value": "Café ☕ 🎲",
+      "valueCodePoints": [
+        "U+0043",
+        "U+0061",
+        "U+0066",
+        "U+00E9",
+        "U+0020",
+        "U+2615",
+        "U+0020",
+        "U+1F3B2"
+      ],
+      "valueUtf8Hex": "436166c3a920e2989520f09f8eb2"
+    },
+    {
+      "expected": {
+        "reason": "EMPTY",
+        "valid": false
+      },
+      "id": "CS-04",
+      "note": "empty",
+      "value": "",
+      "valueCodePoints": [],
+      "valueUtf8Hex": ""
+    },
+    {
+      "expected": {
+        "reason": null,
+        "valid": true
+      },
+      "id": "CS-05",
+      "note": "exactly 64 code points",
+      "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "valueCodePoints": null,
+      "valueUtf8Hex": "61616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161"
+    },
+    {
+      "expected": {
+        "reason": "TOO_LONG",
+        "valid": false
+      },
+      "id": "CS-06",
+      "note": "65 code points",
+      "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "valueCodePoints": null,
+      "valueUtf8Hex": "6161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161616161"
+    },
+    {
+      "expected": {
+        "reason": null,
+        "valid": true
+      },
+      "id": "CS-07",
+      "note": "64 code points / 256 UTF-8 bytes (maximum encoded size)",
+      "value": "🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲🎲",
+      "valueCodePoints": null,
+      "valueUtf8Hex": "f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2f09f8eb2"
+    },
+    {
+      "expected": {
+        "reason": "LEADING_OR_TRAILING_WHITESPACE",
+        "valid": false
+      },
+      "id": "CS-08",
+      "note": "leading U+0020",
+      "value": " seed",
+      "valueCodePoints": [
+        "U+0020",
+        "U+0073",
+        "U+0065",
+        "U+0065",
+        "U+0064"
+      ],
+      "valueUtf8Hex": "2073656564"
+    },
+    {
+      "expected": {
+        "reason": "LEADING_OR_TRAILING_WHITESPACE",
+        "valid": false
+      },
+      "id": "CS-09",
+      "note": "trailing U+00A0 NO-BREAK SPACE",
+      "value": "seed ",
+      "valueCodePoints": [
+        "U+0073",
+        "U+0065",
+        "U+0065",
+        "U+0064",
+        "U+00A0"
+      ],
+      "valueUtf8Hex": "73656564c2a0"
+    },
+    {
+      "expected": {
+        "reason": "CONTROL_CHARACTER",
+        "valid": false
+      },
+      "id": "CS-10",
+      "note": "U+0007 control character",
+      "value": "se\u0007ed",
+      "valueCodePoints": [
+        "U+0073",
+        "U+0065",
+        "U+0007",
+        "U+0065",
+        "U+0064"
+      ],
+      "valueUtf8Hex": "7365076564"
+    },
+    {
+      "expected": {
+        "reason": "NOT_NFC",
+        "valid": false
+      },
+      "id": "CS-11",
+      "note": "decomposed e + U+0301 (not NFC)",
+      "value": "Café",
+      "valueCodePoints": [
+        "U+0043",
+        "U+0061",
+        "U+0066",
+        "U+0065",
+        "U+0301"
+      ],
+      "valueUtf8Hex": "43616665cc81"
+    },
+    {
+      "expected": {
+        "reason": null,
+        "valid": true
+      },
+      "id": "CS-12",
+      "note": "interior space is allowed",
+      "value": "in ner",
+      "valueCodePoints": [
+        "U+0069",
+        "U+006E",
+        "U+0020",
+        "U+006E",
+        "U+0065",
+        "U+0072"
+      ],
+      "valueUtf8Hex": "696e206e6572"
+    },
+    {
+      "expected": {
+        "reason": "UNASSIGNED_CODE_POINT",
+        "valid": false
+      },
+      "id": "CS-13",
+      "note": "noncharacter U+FFFE (General Category Cn)",
+      "value": "seed￾",
+      "valueCodePoints": [
+        "U+0073",
+        "U+0065",
+        "U+0065",
+        "U+0064",
+        "U+FFFE"
+      ],
+      "valueUtf8Hex": "73656564efbfbe"
+    },
+    {
+      "expected": {
+        "reason": null,
+        "valid": true
+      },
+      "id": "CS-14",
+      "note": "U+200D ZERO WIDTH JOINER (format char, allowed)",
+      "value": "a‍b",
+      "valueCodePoints": [
+        "U+0061",
+        "U+200D",
+        "U+0062"
+      ],
+      "valueUtf8Hex": "61e2808d62"
+    }
+  ],
+  "conventions": {
+    "hex": "lowercase, no 0x prefix",
+    "integers": "big-endian",
+    "str": "u32 byte length + UTF-8 bytes, no normalisation applied by encoders/verifiers",
+    "tileIndex": "row * 5 + col, row 0 = top, col 0 = left",
+    "uuid": "canonical lowercase hyphenated text; encoded as 16 raw bytes in RFC 9562 order"
+  },
+  "diceVectors": [
+    {
+      "description": "Baseline Dice round; sequential seed/randomness; default hex client seed; full byte breakdown",
+      "expected": {
+        "candidatesConsumed": [
+          2796396118
+        ],
+        "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+        "commitmentPreimage": [
+          {
+            "field": "tag = str(\"PFGE-PF/v1/commitment\")",
+            "hex": "00000015504647452d50462f76312f636f6d6d69746d656e74",
+            "length": 25,
+            "offset": 0
+          },
+          {
+            "field": "protocolVersion = u16(1)",
+            "hex": "0001",
+            "length": 2,
+            "offset": 25
+          },
+          {
+            "field": "commitmentId = uuid",
+            "hex": "0192a3b4c5d67e8f9a0b1c2d3e4f5a6b",
+            "length": 16,
+            "offset": 27
+          },
+          {
+            "field": "reservedRoundId = uuid",
+            "hex": "0192a3b4c5d67e8f9a0b1c2d3e4f5a6c",
+            "length": 16,
+            "offset": 43
+          },
+          {
+            "field": "casinoId = uuid",
+            "hex": "c0000000000040008000000000000001",
+            "length": 16,
+            "offset": 59
+          },
+          {
+            "field": "auditSubjectRef = uuid",
+            "hex": "a0000000000040008000000000000001",
+            "length": 16,
+            "offset": 75
+          },
+          {
+            "field": "gameId = str",
+            "hex": "0000000464696365",
+            "length": 8,
+            "offset": 91
+          },
+          {
+            "field": "gameVersion = str",
+            "hex": "00000005312e302e30",
+            "length": 9,
+            "offset": 99
+          },
+          {
+            "field": "serverSeed = raw32",
+            "hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+            "length": 32,
+            "offset": 108
+          }
+        ],
+        "commitmentPreimageHex": "00000015504647452d50462f76312f636f6d6d69746d656e7400010192a3b4c5d67e8f9a0b1c2d3e4f5a6b0192a3b4c5d67e8f9a0b1c2d3e4f5a6cc0000000000040008000000000000001a0000000000040008000000000000001000000046469636500000005312e302e30000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "hmacBlocks": [
+          "a6ad9e56caef0dfed4a4ab39031bd054c834960ddcb56028d8313699e0013b95"
+        ],
+        "informative": {
+          "note": "Win/lose per BR-DICE-002; multiplier/payout are Game Math Spec vectors.",
+          "wins": false
+        },
+        "rejectedCandidates": [],
+        "rollDisplay": "61.18",
+        "rollInt": 6118,
+        "streamMessage0": [
+          {
+            "field": "tag = str(\"PFGE-PF/v1/stream\")",
+            "hex": "00000011504647452d50462f76312f73747265616d",
+            "length": 21,
+            "offset": 0
+          },
+          {
+            "field": "protocolVersion = u16(1)",
+            "hex": "0001",
+            "length": 2,
+            "offset": 21
+          },
+          {
+            "field": "commitmentId = uuid",
+            "hex": "0192a3b4c5d67e8f9a0b1c2d3e4f5a6b",
+            "length": 16,
+            "offset": 23
+          },
+          {
+            "field": "casinoId = uuid",
+            "hex": "c0000000000040008000000000000001",
+            "length": 16,
+            "offset": 39
+          },
+          {
+            "field": "auditSubjectRef = uuid",
+            "hex": "a0000000000040008000000000000001",
+            "length": 16,
+            "offset": 55
+          },
+          {
+            "field": "gameId = str",
+            "hex": "0000000464696365",
+            "length": 8,
+            "offset": 71
+          },
+          {
+            "field": "gameVersion = str",
+            "hex": "00000005312e302e30",
+            "length": 9,
+            "offset": 79
+          },
+          {
+            "field": "roundId = uuid",
+            "hex": "0192a3b4c5d67e8f9a0b1c2d3e4f5a6c",
+            "length": 16,
+            "offset": 88
+          },
+          {
+            "field": "clientSeed = str",
+            "hex": "000000203566326330613931653764333462363861306331663239653364376238613634",
+            "length": 36,
+            "offset": 104
+          },
+          {
+            "field": "clientRandomness = raw32",
+            "hex": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+            "length": 32,
+            "offset": 140
+          },
+          {
+            "field": "purpose = str",
+            "hex": "00000009646963652d726f6c6c",
+            "length": 13,
+            "offset": 172
+          },
+          {
+            "field": "streamCounter = u32",
+            "hex": "00000000",
+            "length": 4,
+            "offset": 185
+          }
+        ],
+        "streamMessage0Hex": "00000011504647452d50462f76312f73747265616d00010192a3b4c5d67e8f9a0b1c2d3e4f5a6bc0000000000040008000000000000001a0000000000040008000000000000001000000046469636500000005312e302e300192a3b4c5d67e8f9a0b1c2d3e4f5a6c000000203566326330613931653764333462363861306331663239653364376238613634fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e000000009646963652d726f6c6c00000000"
+      },
+      "id": "D-01",
+      "input": {
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+        "casinoId": "c0000000-0000-4000-8000-000000000001",
+        "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+        "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+        "clientSeedUtf8Hex": "3566326330613931653764333462363861306331663239653364376238613634",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "gameId": "dice",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c",
+        "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "wager": {
+          "direction": "under",
+          "targetDisplay": "50.00",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Player-edited Unicode client seed; Roll Over",
+      "expected": {
+        "candidatesConsumed": [
+          2569313448
+        ],
+        "commitment": "20d5b656be34e4caeb30ae3de5d4ce52c3e2f8f35ccab257d3984769f3650ce4",
+        "hmacBlocks": [
+          "99249ca8d24adf3808f541a96d36232d8852c6dc76cc70f695963c03d3e10a78"
+        ],
+        "informative": {
+          "note": "Win/lose per BR-DICE-002; multiplier/payout are Game Math Spec vectors.",
+          "wins": true
+        },
+        "rejectedCandidates": [],
+        "rollDisplay": "34.48",
+        "rollInt": 3448
+      },
+      "id": "D-02",
+      "input": {
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+        "casinoId": "c0000000-0000-4000-8000-000000000001",
+        "clientRandomness": "9ed06f443e252d2b6a0f7a583c34e4d37606018bf4481c5e43d1ddaad7efe127",
+        "clientSeed": "Café ☕ 🎲",
+        "clientSeedUtf8Hex": "436166c3a920e2989520f09f8eb2",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-000000000002",
+        "gameId": "dice",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-100000000002",
+        "serverSeed": "e3bda53d31f769906b20bd82f02770cc4c771b8737bf9a5b316f8669ecd96ae6",
+        "wager": {
+          "direction": "over",
+          "targetDisplay": "25.50",
+          "targetInt": 2550
+        }
+      }
+    },
+    {
+      "description": "Identical to D-01 except casinoId (tenant binding changes commitment and roll)",
+      "expected": {
+        "candidatesConsumed": [
+          728989499
+        ],
+        "commitment": "8840386c35302455c01b54b84c25cd27378dfe2283b5bb1c639c3e73c435288e",
+        "hmacBlocks": [
+          "2b737f3b777198bf96458d9147bad963b8131454098de53071b2ccf205e909e8"
+        ],
+        "informative": {
+          "note": "Win/lose per BR-DICE-002; multiplier/payout are Game Math Spec vectors.",
+          "wins": false
+        },
+        "rejectedCandidates": [],
+        "rollDisplay": "94.99",
+        "rollInt": 9499
+      },
+      "id": "D-03",
+      "input": {
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+        "casinoId": "c0000000-0000-4000-8000-000000000002",
+        "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+        "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+        "clientSeedUtf8Hex": "3566326330613931653764333462363861306331663239653364376238613634",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "gameId": "dice",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c",
+        "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+        "wager": {
+          "direction": "under",
+          "targetDisplay": "50.00",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Natural rejection-sampling case: first candidate >= 4294960000 is rejected and the second is used (found at search index 75401)",
+      "expected": {
+        "candidatesConsumed": [
+          4294962309,
+          2813623125
+        ],
+        "commitment": "f3a72ae86b0eec122e326bd38385910a3b1f0e354a45252eba6205a65457426d",
+        "hmacBlocks": [
+          "ffffec85a7b47b55ccb3bf50e2954b79f55233aca3bec96df7e5bd754227a838"
+        ],
+        "informative": {
+          "note": "Win/lose per BR-DICE-002; multiplier/payout are Game Math Spec vectors.",
+          "wins": true
+        },
+        "rejectedCandidates": [
+          4294962309
+        ],
+        "rollDisplay": "31.25",
+        "rollInt": 3125
+      },
+      "id": "D-04",
+      "input": {
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000002",
+        "casinoId": "c0000000-0000-4000-8000-000000000001",
+        "clientRandomness": "2b779f4215158dcd79488fb2662a858bc868db7e9ecf2df0630e70991ffa18d1",
+        "clientSeed": "lucky-seed-42",
+        "clientSeedUtf8Hex": "6c75636b792d736565642d3432",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-000000000004",
+        "gameId": "dice",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-100000000004",
+        "serverSeed": "ba2fdd3dcbd6caaa9ef0e25532f26b4e6f7d152a7dcbdf33c988eeef36b0d9ea",
+        "wager": {
+          "direction": "under",
+          "targetDisplay": "50.00",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Boundary: target equals the roll, so Roll Under loses (displayed boundary loses)",
+      "expected": {
+        "candidatesConsumed": [
+          132916018
+        ],
+        "commitment": "47f2d859fd354df01f174f911d2727275573f739f6dbdd8ba8d3fe9bbaefac0e",
+        "hmacBlocks": [
+          "07ec2332554b758b995c648aa27e8f2c0b23c221f11a77fd5b0f7908a215c283"
+        ],
+        "informative": {
+          "note": "Win/lose per BR-DICE-002; multiplier/payout are Game Math Spec vectors.",
+          "wins": false
+        },
+        "rejectedCandidates": [],
+        "rollDisplay": "60.18",
+        "rollInt": 6018
+      },
+      "id": "D-05",
+      "input": {
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+        "casinoId": "c0000000-0000-4000-8000-000000000001",
+        "clientRandomness": "6d57533939cccc8013219a14d1f9e319ed134d05abf20b0e3d1a555db81d6339",
+        "clientSeed": "lucky-seed-42",
+        "clientSeedUtf8Hex": "6c75636b792d736565642d3432",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-000000000005",
+        "gameId": "dice",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-100000000005",
+        "serverSeed": "b7308723f1f05e781faa9b92905996eec5ba43bdf3ec3d5371448b0a4b335c01",
+        "wager": {
+          "direction": "under",
+          "targetDisplay": "60.18",
+          "targetInt": 6018
+        }
+      }
+    }
+  ],
+  "encodingVectors": [
+    {
+      "hex": "0001",
+      "id": "E-01",
+      "type": "u16",
+      "value": 1
+    },
+    {
+      "hex": "00000000",
+      "id": "E-02",
+      "type": "u32",
+      "value": 0
+    },
+    {
+      "hex": "ffffffff",
+      "id": "E-03",
+      "type": "u32",
+      "value": 4294967295
+    },
+    {
+      "hex": "0000000464696365",
+      "id": "E-04",
+      "type": "str",
+      "value": "dice"
+    },
+    {
+      "hex": "0000000e436166c3a920e2989520f09f8eb2",
+      "id": "E-05",
+      "note": "1-, 2-, 3- and 4-byte UTF-8 sequences; é is precomposed U+00E9 (NFC)",
+      "type": "str",
+      "value": "Café ☕ 🎲"
+    },
+    {
+      "hex": "00000000",
+      "id": "E-06",
+      "note": "empty string encoding (valid primitive; an empty clientSeed is rejected by validation)",
+      "type": "str",
+      "value": ""
+    },
+    {
+      "hex": "c0000000000040008000000000000001",
+      "id": "E-07",
+      "type": "uuid",
+      "value": "c0000000-0000-4000-8000-000000000001"
+    },
+    {
+      "hex": "0192a3b4c5d67e8f9a0b1c2d3e4f5a6b",
+      "id": "E-08",
+      "note": ".NET: Guid.ToByteArray() WITHOUT bigEndian:true yields b4a39201d6c58f7e... - that is WRONG",
+      "type": "uuid",
+      "value": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b"
+    },
+    {
+      "error": "NON_CANONICAL_UUID",
+      "id": "E-09",
+      "note": "uppercase text is rejected, not silently lower-cased",
+      "type": "uuid",
+      "value": "0192A3B4-C5D6-7E8F-9A0B-1C2D3E4F5A6B"
+    },
+    {
+      "error": "NON_CANONICAL_HEX",
+      "id": "E-10",
+      "type": "hex32",
+      "value": "000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F"
+    },
+    {
+      "error": "NON_CANONICAL_UUID",
+      "id": "E-11",
+      "note": "trailing LF (Python re.match + $ and .NET $ would accept it)",
+      "type": "uuid",
+      "value": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b\n"
+    },
+    {
+      "error": "NON_CANONICAL_HEX",
+      "id": "E-12",
+      "note": "trailing LF",
+      "type": "hex32",
+      "value": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f\n"
+    },
+    {
+      "error": "INVALID_GAME_ID",
+      "id": "E-13",
+      "note": "trailing LF",
+      "type": "gameId",
+      "value": "dice\n"
+    },
+    {
+      "error": "INVALID_GAME_VERSION",
+      "id": "E-14",
+      "note": "trailing LF",
+      "type": "gameVersion",
+      "value": "1.0.0\n"
+    },
+    {
+      "error": "INVALID_PURPOSE",
+      "id": "E-15",
+      "note": "trailing LF",
+      "type": "purpose",
+      "value": "dice-roll\n"
+    },
+    {
+      "error": "NON_CANONICAL_UUID",
+      "id": "E-16",
+      "note": "trailing U+0020",
+      "type": "uuid",
+      "value": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b "
+    },
+    {
+      "error": "INVALID_GAME_VERSION",
+      "id": "E-17",
+      "note": "leading zero is not SemVer core",
+      "type": "gameVersion",
+      "value": "01.0.0"
+    },
+    {
+      "error": "INVALID_GAME_ID",
+      "id": "E-18",
+      "note": "uppercase",
+      "type": "gameId",
+      "value": "Dice"
+    },
+    {
+      "error": "INVALID_GAME_ID",
+      "id": "E-19",
+      "note": "JSON null; \"null\" would match the pattern",
+      "type": "gameId",
+      "value": null
+    },
+    {
+      "error": "INVALID_GAME_ID",
+      "id": "E-20",
+      "note": "JSON true",
+      "type": "gameId",
+      "value": true
+    },
+    {
+      "error": "INVALID_PURPOSE",
+      "id": "E-21",
+      "note": "JSON null",
+      "type": "purpose",
+      "value": null
+    }
+  ],
+  "minesShuffleSyntheticVectors": [
+    {
+      "candidates": [
+        0,
+        1,
+        2,
+        4294967292,
+        3,
+        2654435761,
+        1308871522,
+        3963307283,
+        2617743044,
+        1272178805,
+        3926614566,
+        2581050327,
+        1235486088,
+        3889921849,
+        2544357610,
+        1198793371,
+        3853229132,
+        2507664893,
+        1162100654,
+        3816536415,
+        2470972176,
+        1125407937,
+        3779843698,
+        2434279459,
+        1088715220
+      ],
+      "description": "Forward Fisher-Yates driven by explicit candidates; step i=3 (n=22) rejects its first candidate",
+      "expected": {
+        "consumed": 25,
+        "minesFor3": [
+          0,
+          2,
+          4
+        ],
+        "permutation": [
+          0,
+          2,
+          4,
+          6,
+          23,
+          7,
+          9,
+          3,
+          14,
+          15,
+          22,
+          5,
+          20,
+          1,
+          12,
+          17,
+          21,
+          13,
+          24,
+          19,
+          10,
+          11,
+          16,
+          8,
+          18
+        ],
+        "rejected": [
+          4294967292
+        ]
+      },
+      "id": "MS-01"
+    }
+  ],
+  "minesVectors": [
+    {
+      "description": "3 mines; two safe reveals then player cashout",
+      "expected": {
+        "candidatesConsumed": [
+          522143674,
+          3091133462,
+          3506261235,
+          1320729464,
+          421680783,
+          94432745,
+          3569855973,
+          751942305,
+          2378589193,
+          1537093325,
+          3299358242,
+          2230817477,
+          1931713231,
+          614054577,
+          1124705105,
+          1967005974,
+          3143944311,
+          1000572430,
+          169046528,
+          1206412482,
+          1394407199,
+          198244966,
+          4059260079,
+          231293217
+        ],
+        "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+        "grid": [
+          ".....",
+          ".....",
+          ".....",
+          "X.X..",
+          "....X"
+        ],
+        "hmacBlocks": [
+          "1f1f47bab83ef416d0fd4cf34eb8bb781922568f05a0ede9d4c7ade52cd1baa1",
+          "8dc664095b9e2ecdc4a8362284f792c573239acf2499bab14309a351753e2116",
+          "bb64c8773ba3860e0a13720047e864c2531cf71f0bd0fa66f1f364af0dc94121"
+        ],
+        "informative": {
+          "events": [
+            {
+              "action": "reveal",
+              "result": "safe",
+              "seq": 1,
+              "tile": 0
+            },
+            {
+              "action": "reveal",
+              "result": "safe",
+              "seq": 2,
+              "tile": 1
+            },
+            {
+              "action": "cashout",
+              "seq": 3
+            }
+          ],
+          "outcome": "cashout",
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "mines": [
+          15,
+          17,
+          24
+        ],
+        "permutation": [
+          24,
+          15,
+          17,
+          13,
+          10,
+          4,
+          1,
+          16,
+          14,
+          22,
+          12,
+          18,
+          11,
+          9,
+          21,
+          19,
+          3,
+          23,
+          5,
+          6,
+          0,
+          2,
+          7,
+          20,
+          8
+        ],
+        "rejectedCandidates": []
+      },
+      "id": "M-01",
+      "input": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+        "casinoId": "c0000000-0000-4000-8000-000000000001",
+        "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+        "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+        "clientSeedUtf8Hex": "3566326330613931653764333462363861306331663239653364376238613634",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "gameId": "mines",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001",
+        "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda",
+        "wager": {
+          "mineCount": 3
+        }
+      }
+    },
+    {
+      "description": "Same fairness inputs as M-01 with 5 mines: layout is the first 5 of the same permutation (superset of M-01's mines); one safe reveal then inactivity timeout -> cashout at earned value",
+      "expected": {
+        "candidatesConsumed": [
+          522143674,
+          3091133462,
+          3506261235,
+          1320729464,
+          421680783,
+          94432745,
+          3569855973,
+          751942305,
+          2378589193,
+          1537093325,
+          3299358242,
+          2230817477,
+          1931713231,
+          614054577,
+          1124705105,
+          1967005974,
+          3143944311,
+          1000572430,
+          169046528,
+          1206412482,
+          1394407199,
+          198244966,
+          4059260079,
+          231293217
+        ],
+        "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+        "grid": [
+          ".....",
+          ".....",
+          "X..X.",
+          "X.X..",
+          "....X"
+        ],
+        "hmacBlocks": [
+          "1f1f47bab83ef416d0fd4cf34eb8bb781922568f05a0ede9d4c7ade52cd1baa1",
+          "8dc664095b9e2ecdc4a8362284f792c573239acf2499bab14309a351753e2116",
+          "bb64c8773ba3860e0a13720047e864c2531cf71f0bd0fa66f1f364af0dc94121"
+        ],
+        "informative": {
+          "events": [
+            {
+              "action": "reveal",
+              "result": "safe",
+              "seq": 1,
+              "tile": 23
+            },
+            {
+              "action": "timeout",
+              "seq": 2
+            }
+          ],
+          "outcome": "cashout",
+          "safeRevealed": 1,
+          "terminal": "timeout"
+        },
+        "mines": [
+          10,
+          13,
+          15,
+          17,
+          24
+        ],
+        "permutation": [
+          24,
+          15,
+          17,
+          13,
+          10,
+          4,
+          1,
+          16,
+          14,
+          22,
+          12,
+          18,
+          11,
+          9,
+          21,
+          19,
+          3,
+          23,
+          5,
+          6,
+          0,
+          2,
+          7,
+          20,
+          8
+        ],
+        "rejectedCandidates": []
+      },
+      "id": "M-02",
+      "input": {
+        "actions": {
+          "end": "timeout",
+          "reveals": [
+            23
+          ]
+        },
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+        "casinoId": "c0000000-0000-4000-8000-000000000001",
+        "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+        "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+        "clientSeedUtf8Hex": "3566326330613931653764333462363861306331663239653364376238613634",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "gameId": "mines",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001",
+        "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda",
+        "wager": {
+          "mineCount": 5
+        }
+      }
+    },
+    {
+      "description": "Same inputs as M-01 (3 mines); second reveal hits a mine -> loss",
+      "expected": {
+        "candidatesConsumed": [
+          522143674,
+          3091133462,
+          3506261235,
+          1320729464,
+          421680783,
+          94432745,
+          3569855973,
+          751942305,
+          2378589193,
+          1537093325,
+          3299358242,
+          2230817477,
+          1931713231,
+          614054577,
+          1124705105,
+          1967005974,
+          3143944311,
+          1000572430,
+          169046528,
+          1206412482,
+          1394407199,
+          198244966,
+          4059260079,
+          231293217
+        ],
+        "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+        "grid": [
+          ".....",
+          ".....",
+          ".....",
+          "X.X..",
+          "....X"
+        ],
+        "hmacBlocks": [
+          "1f1f47bab83ef416d0fd4cf34eb8bb781922568f05a0ede9d4c7ade52cd1baa1",
+          "8dc664095b9e2ecdc4a8362284f792c573239acf2499bab14309a351753e2116",
+          "bb64c8773ba3860e0a13720047e864c2531cf71f0bd0fa66f1f364af0dc94121"
+        ],
+        "informative": {
+          "events": [
+            {
+              "action": "reveal",
+              "result": "safe",
+              "seq": 1,
+              "tile": 0
+            },
+            {
+              "action": "reveal",
+              "result": "mine",
+              "seq": 2,
+              "tile": 15
+            }
+          ],
+          "outcome": "loss",
+          "safeRevealed": 1,
+          "terminal": "mine-hit"
+        },
+        "mines": [
+          15,
+          17,
+          24
+        ],
+        "permutation": [
+          24,
+          15,
+          17,
+          13,
+          10,
+          4,
+          1,
+          16,
+          14,
+          22,
+          12,
+          18,
+          11,
+          9,
+          21,
+          19,
+          3,
+          23,
+          5,
+          6,
+          0,
+          2,
+          7,
+          20,
+          8
+        ],
+        "rejectedCandidates": []
+      },
+      "id": "M-03",
+      "input": {
+        "actions": {
+          "end": null,
+          "reveals": [
+            0,
+            15
+          ]
+        },
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+        "casinoId": "c0000000-0000-4000-8000-000000000001",
+        "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+        "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+        "clientSeedUtf8Hex": "3566326330613931653764333462363861306331663239653364376238613634",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "gameId": "mines",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001",
+        "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda",
+        "wager": {
+          "mineCount": 3
+        }
+      }
+    },
+    {
+      "description": "24 mines; the single safe tile is revealed -> automatic all-safe cashout",
+      "expected": {
+        "candidatesConsumed": [
+          3220853852,
+          673820205,
+          68190386,
+          2378629371,
+          624606870,
+          1630144258,
+          101187884,
+          422409332,
+          1321674979,
+          3830045415,
+          2430710670,
+          462655082,
+          2822642490,
+          4058213265,
+          472868025,
+          4101984944,
+          411812663,
+          2893858291,
+          2786626908,
+          2099809879,
+          2910940277,
+          1158100499,
+          2005986711,
+          3485019159
+        ],
+        "commitment": "c6698f9925a34a590b13b3d04345610f6d662d47a69f3d62e83b81b131f10dda",
+        "grid": [
+          "XXXXX",
+          ".XXXX",
+          "XXXXX",
+          "XXXXX",
+          "XXXXX"
+        ],
+        "hmacBlocks": [
+          "bffa545c2829ae2d041080b28dc700fb253abe96612a07020608012c192d7474",
+          "4ec728e3e449dae790e1b38e1b938e6aa83e1b3af1e36b911c2f64b9f47f52b0",
+          "188bc337ac7cc5f3a6188d5c7d288e57ad816c75450736137790ed97cfb92c17"
+        ],
+        "informative": {
+          "events": [
+            {
+              "action": "reveal",
+              "result": "safe",
+              "seq": 1,
+              "tile": 5
+            }
+          ],
+          "outcome": "cashout",
+          "safeRevealed": 1,
+          "terminal": "auto-cashout-all-safe"
+        },
+        "mines": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24
+        ],
+        "permutation": [
+          2,
+          22,
+          11,
+          1,
+          10,
+          23,
+          8,
+          9,
+          6,
+          16,
+          4,
+          19,
+          17,
+          3,
+          12,
+          0,
+          21,
+          20,
+          14,
+          18,
+          13,
+          24,
+          15,
+          7,
+          5
+        ],
+        "rejectedCandidates": []
+      },
+      "id": "M-04",
+      "input": {
+        "actions": {
+          "end": null,
+          "reveals": [
+            5
+          ]
+        },
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000002",
+        "casinoId": "c0000000-0000-4000-8000-000000000002",
+        "clientRandomness": "157d07708ba998e735be5ae8b200cf73a93b82e3ef07e9ae5abfe8dceda331f9",
+        "clientSeed": "Café ☕ 🎲",
+        "clientSeedUtf8Hex": "436166c3a920e2989520f09f8eb2",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000004",
+        "gameId": "mines",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000004",
+        "serverSeed": "df8cf4fe1ba18c3c40482b6924a464e3a7be30272a22d46af1eebb1f91d15a4f",
+        "wager": {
+          "mineCount": 24
+        }
+      }
+    },
+    {
+      "description": "1 mine; zero selections then inactivity timeout -> refund (informative)",
+      "expected": {
+        "candidatesConsumed": [
+          3220853852,
+          673820205,
+          68190386,
+          2378629371,
+          624606870,
+          1630144258,
+          101187884,
+          422409332,
+          1321674979,
+          3830045415,
+          2430710670,
+          462655082,
+          2822642490,
+          4058213265,
+          472868025,
+          4101984944,
+          411812663,
+          2893858291,
+          2786626908,
+          2099809879,
+          2910940277,
+          1158100499,
+          2005986711,
+          3485019159
+        ],
+        "commitment": "c6698f9925a34a590b13b3d04345610f6d662d47a69f3d62e83b81b131f10dda",
+        "grid": [
+          "..X..",
+          ".....",
+          ".....",
+          ".....",
+          "....."
+        ],
+        "hmacBlocks": [
+          "bffa545c2829ae2d041080b28dc700fb253abe96612a07020608012c192d7474",
+          "4ec728e3e449dae790e1b38e1b938e6aa83e1b3af1e36b911c2f64b9f47f52b0",
+          "188bc337ac7cc5f3a6188d5c7d288e57ad816c75450736137790ed97cfb92c17"
+        ],
+        "informative": {
+          "events": [
+            {
+              "action": "timeout",
+              "seq": 1
+            }
+          ],
+          "outcome": "refund",
+          "safeRevealed": 0,
+          "terminal": "timeout"
+        },
+        "mines": [
+          2
+        ],
+        "permutation": [
+          2,
+          22,
+          11,
+          1,
+          10,
+          23,
+          8,
+          9,
+          6,
+          16,
+          4,
+          19,
+          17,
+          3,
+          12,
+          0,
+          21,
+          20,
+          14,
+          18,
+          13,
+          24,
+          15,
+          7,
+          5
+        ],
+        "rejectedCandidates": []
+      },
+      "id": "M-05",
+      "input": {
+        "actions": {
+          "end": "timeout",
+          "reveals": []
+        },
+        "auditSubjectRef": "a0000000-0000-4000-8000-000000000002",
+        "casinoId": "c0000000-0000-4000-8000-000000000002",
+        "clientRandomness": "157d07708ba998e735be5ae8b200cf73a93b82e3ef07e9ae5abfe8dceda331f9",
+        "clientSeed": "Café ☕ 🎲",
+        "clientSeedUtf8Hex": "436166c3a920e2989520f09f8eb2",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000004",
+        "gameId": "mines",
+        "gameVersion": "1.0.0",
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000004",
+        "serverSeed": "df8cf4fe1ba18c3c40482b6924a464e3a7be30272a22d46af1eebb1f91d15a4f",
+        "wager": {
+          "mineCount": 1
+        }
+      }
+    }
+  ],
+  "negativeVectors": [
+    {
+      "description": "D-01 payload with roundId changed after commitment: recomputed commitment no longer matches the published D-01 commitment",
+      "expected": {
+        "reason": "COMMITMENT_MISMATCH",
+        "result": "FAIL"
+      },
+      "id": "X-01",
+      "publishedCommitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+      "recomputedCommitment": "5f555d7c60f398771d2c7ca05d470138f09166266dc699638256e4388b69e57e",
+      "tamperedField": {
+        "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6d"
+      }
+    },
+    {
+      "description": "D-01 with gameVersion changed to 1.0.1",
+      "expected": {
+        "reason": "COMMITMENT_MISMATCH",
+        "result": "FAIL"
+      },
+      "id": "X-02",
+      "publishedCommitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+      "recomputedCommitment": "b1145be798b7c146e129f4efe397cbf87f931777e0308218125c7f3d63fad41d",
+      "scope": "commitment primitive only. 1.0.1 is not in the registry, so the full procedure (spec §11.2) stops at step 3 with UNSUPPORTED_VERSION before recomputing the commitment; see payload vector P-06",
+      "tamperedField": {
+        "gameVersion": "1.0.1"
+      }
+    },
+    {
+      "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a65",
+      "description": "D-01 with a different clientSeed: commitment still matches (clientSeed is not committed) but the roll changes; verifier must compare against the client-recorded seed",
+      "expected": {
+        "commitmentMatches": true,
+        "result": "FAIL_IF_DIFFERENT_FROM_CLIENT_RECORD",
+        "rollInt": 6188
+      },
+      "id": "X-03"
+    },
+    {
+      "clientSeedNfd": "Café ☕ 🎲",
+      "clientSeedNfdUtf8Hex": "43616665cc8120e2989520f09f8eb2",
+      "description": "clientSeed in NFD form (Cafe + U+0301) hashes differently from NFC; verifiers must NOT normalise",
+      "expected": {
+        "engineValidation": "REJECT NOT_NFC",
+        "rollIntIfHashedAsGiven": 5926,
+        "rollIntOfD02": 3448
+      },
+      "id": "X-04"
+    },
+    {
+      "actions": {
+        "end": "cashout",
+        "reveals": [
+          0,
+          15,
+          1
+        ]
+      },
+      "baseVector": "M-03",
+      "description": "Mines action history that continues after a mine hit is inconsistent",
+      "expected": {
+        "reason": "ACTION_AFTER_TERMINAL",
+        "result": "FAIL"
+      },
+      "id": "X-05"
+    }
+  ],
+  "nextIntVectors": [
+    {
+      "candidates": [
+        123456789
+      ],
+      "expected": {
+        "consumed": 1,
+        "rejected": [],
+        "result": 6789
+      },
+      "id": "N-01",
+      "limit": 4294960000,
+      "n": 10000,
+      "note": "ordinary accept"
+    },
+    {
+      "candidates": [
+        4294959999
+      ],
+      "expected": {
+        "consumed": 1,
+        "rejected": [],
+        "result": 9999
+      },
+      "id": "N-02",
+      "limit": 4294960000,
+      "n": 10000,
+      "note": "largest accepted candidate (limit-1) -> 9999"
+    },
+    {
+      "candidates": [
+        4294960000,
+        42
+      ],
+      "expected": {
+        "consumed": 2,
+        "rejected": [
+          4294960000
+        ],
+        "result": 42
+      },
+      "id": "N-03",
+      "limit": 4294960000,
+      "n": 10000,
+      "note": "candidate == limit is rejected"
+    },
+    {
+      "candidates": [
+        4294967295,
+        4294960000,
+        0
+      ],
+      "expected": {
+        "consumed": 3,
+        "rejected": [
+          4294967295,
+          4294960000
+        ],
+        "result": 0
+      },
+      "id": "N-04",
+      "limit": 4294960000,
+      "n": 10000,
+      "note": "two consecutive rejections"
+    },
+    {
+      "candidates": [
+        4294967274
+      ],
+      "expected": {
+        "consumed": 1,
+        "rejected": [],
+        "result": 24
+      },
+      "id": "N-05",
+      "limit": 4294967275,
+      "n": 25,
+      "note": "largest accepted for n=25"
+    },
+    {
+      "candidates": [
+        4294967275,
+        7
+      ],
+      "expected": {
+        "consumed": 2,
+        "rejected": [
+          4294967275
+        ],
+        "result": 7
+      },
+      "id": "N-06",
+      "limit": 4294967275,
+      "n": 25,
+      "note": "rejection for n=25"
+    },
+    {
+      "candidates": [
+        4294967295
+      ],
+      "expected": {
+        "consumed": 1,
+        "rejected": [],
+        "result": 1
+      },
+      "id": "N-07",
+      "limit": 4294967296,
+      "n": 2,
+      "note": "n=2: 2^32 divisible by 2, never rejects"
+    },
+    {
+      "candidates": [
+        987654321
+      ],
+      "expected": {
+        "consumed": 1,
+        "rejected": [],
+        "result": 0
+      },
+      "id": "N-08",
+      "limit": 4294967296,
+      "n": 1,
+      "note": "n=1 always returns 0 but still consumes one candidate"
+    },
+    {
+      "candidates": [
+        4294967295,
+        5
+      ],
+      "expected": {
+        "consumed": 2,
+        "rejected": [
+          4294967295
+        ],
+        "result": 5
+      },
+      "id": "N-09",
+      "limit": 4294967280,
+      "n": 24,
+      "note": "n=24: limit = 4294967280; 4294967295 rejected"
+    }
+  ],
+  "payloadVectors": [
+    {
+      "description": "D-01 with this device's complete record",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "evidence": "complete",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": []
+      },
+      "id": "P-01",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "D-01 with no device record: the calculation is consistent, but nothing shows this was the player's wager (spec §11.6)",
+      "deviceRecord": null,
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "absent",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": []
+      },
+      "id": "P-02",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Recovered round: verification is not attempted",
+      "deviceRecord": null,
+      "expected": {
+        "result": "RECOVERED_NOT_VERIFIABLE"
+      },
+      "id": "P-03",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "recovery": {
+          "status": "fairness-evidence-unavailable"
+        },
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Uppercase commitmentId",
+      "deviceRecord": null,
+      "expected": {
+        "result": "FORMAT_ERROR"
+      },
+      "id": "P-04",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192A3B4-C5D6-7E8F-9A0B-1C2D3E4F5A6B",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "roundId with a trailing LF (whole-string validation, spec §17 P16)",
+      "deviceRecord": null,
+      "expected": {
+        "result": "FORMAT_ERROR"
+      },
+      "id": "P-05",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c\n"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "gameVersion 1.0.1 is not in the registry: step 3 stops before the commitment check (full-payload form of X-02)",
+      "deviceRecord": null,
+      "expected": {
+        "result": "UNSUPPORTED_VERSION"
+      },
+      "id": "P-06",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.1",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Server seed not yet revealed",
+      "deviceRecord": null,
+      "expected": {
+        "result": "NOT_REVEALED"
+      },
+      "id": "P-07",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e"
+        },
+        "math": {},
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "roundId changed after the commitment (X-01)",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "COMMITMENT_MISMATCH"
+      },
+      "id": "P-08",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6d"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Server substituted the client seed and recomputed a consistent roll (X-03); the device record exposes it",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-09",
+      "payload": {
+        "claimed": {
+          "rollInt": 6188
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a65",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Same substitution with no device record: undetectable, so the result must not claim device-level assurance",
+      "deviceRecord": null,
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "absent",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": []
+      },
+      "id": "P-10",
+      "payload": {
+        "claimed": {
+          "rollInt": 6188
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a65",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Device recorded a different commitment from the one in the payload",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "5f555d7c60f39877000000000000000000000000000000000000000000000000",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-11",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Wager substitution (review FP-01): device recorded Over 49.99, which wins on 61.18; payload claims Under 50.00, a loss",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "over",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 4999
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-12",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Target substitution: device recorded Under 62.00, which wins on 61.18; payload claims Under 50.00",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 6200
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-13",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Stake substitution",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "1.0000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-14",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Currency substitution",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_EUR",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-15",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Math-profile substitution in the pinned versions",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.1.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-16",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Claimed roll differs from the recomputed roll",
+      "deviceRecord": null,
+      "expected": {
+        "result": "OUTCOME_MISMATCH"
+      },
+      "id": "P-17",
+      "payload": {
+        "claimed": {
+          "rollInt": 6119
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "M-01 with this device's complete record",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "complete",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": [
+          1,
+          2,
+          3
+        ]
+      },
+      "id": "P-18",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "M-01 with no device record",
+      "deviceRecord": null,
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "absent",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [
+          1,
+          2,
+          3
+        ],
+        "witnessedSeqs": []
+      },
+      "id": "P-19",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Two-device resume, device A: submitted the wager and revealed tile 0, then device B resumed. Seqs 2-3 are unwitnessed, not contradictory (review FP-04)",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "partial",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [
+          2,
+          3
+        ],
+        "witnessedSeqs": [
+          1
+        ]
+      },
+      "id": "P-20",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Two-device resume, device B: never saw the submission; witnessed seq 2 and the cashout",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001"
+      },
+      "expected": {
+        "evidence": "partial",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [
+          1
+        ],
+        "witnessedSeqs": [
+          2,
+          3
+        ]
+      },
+      "id": "P-21",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Wager submitted on device A; device B resumed before any tile and witnessed every action. Without the submission the record is still partial",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001"
+      },
+      "expected": {
+        "evidence": "partial",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": [
+          1,
+          2,
+          3
+        ]
+      },
+      "id": "P-22",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Lost response: seq 2 was accepted but its response never arrived; the device resumed and cashed out. Only acknowledged actions are recorded",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "partial",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [
+          2
+        ],
+        "witnessedSeqs": [
+          1,
+          3
+        ]
+      },
+      "id": "P-23",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Witnessed action altered: device revealed tile 1 at seq 2, payload shows tile 2 (itself consistent)",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-24",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            2
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Witnessed cashout at seq 3 replaced by a mine hit on tile 15",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-25",
+      "payload": {
+        "actions": {
+          "end": null,
+          "reveals": [
+            0,
+            1,
+            15
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "mine-hit"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": null,
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "mineCount substitution: device recorded 5 mines, payload claims 3",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 5,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-26",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Claimed mine layout differs from the recomputed layout",
+      "deviceRecord": null,
+      "expected": {
+        "result": "OUTCOME_MISMATCH"
+      },
+      "id": "P-27",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            23
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Claimed safe-reveal count differs from the replay",
+      "deviceRecord": null,
+      "expected": {
+        "result": "OUTCOME_MISMATCH"
+      },
+      "id": "P-28",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 3,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Same tile revealed twice",
+      "deviceRecord": null,
+      "expected": {
+        "result": "INVALID_TILE"
+      },
+      "id": "P-29",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            0
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Tile index 25 is off the board",
+      "deviceRecord": null,
+      "expected": {
+        "result": "INVALID_TILE"
+      },
+      "id": "P-30",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            25
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Action after a mine hit (X-05 as a payload)",
+      "deviceRecord": null,
+      "expected": {
+        "result": "ACTION_AFTER_TERMINAL"
+      },
+      "id": "P-31",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            15,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "No terminal event after a safe reveal",
+      "deviceRecord": null,
+      "expected": {
+        "result": "MISSING_TERMINAL"
+      },
+      "id": "P-32",
+      "payload": {
+        "actions": {
+          "end": null,
+          "reveals": [
+            0
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Cashout with no safe tile",
+      "deviceRecord": null,
+      "expected": {
+        "result": "CASHOUT_WITHOUT_SAFE_TILE"
+      },
+      "id": "P-33",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": []
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "mineCount 25 is outside 1-24",
+      "deviceRecord": null,
+      "expected": {
+        "result": "FORMAT_ERROR"
+      },
+      "id": "P-34",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 25,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "M-02 timeout: the timeout is a server event, not a player action, so seq 1 alone is complete",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 23
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 5,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "complete",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": [
+          1
+        ]
+      },
+      "id": "P-35",
+      "payload": {
+        "actions": {
+          "end": "timeout",
+          "reveals": [
+            23
+          ]
+        },
+        "claimed": {
+          "mines": [
+            10,
+            13,
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 1,
+          "terminal": "timeout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2375",
+          "payout": "0.1237",
+          "preRoundingPayout": "0.12375000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 5,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "M-04 automatic all-safe cashout: no cashout action exists, so seq 1 alone is complete",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 5
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000004",
+        "submission": {
+          "clientRandomness": "157d07708ba998e735be5ae8b200cf73a93b82e3ef07e9ae5abfe8dceda331f9",
+          "clientSeed": "Café ☕ 🎲",
+          "commitment": "c6698f9925a34a590b13b3d04345610f6d662d47a69f3d62e83b81b131f10dda",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 24,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "complete",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": [
+          1
+        ]
+      },
+      "id": "P-36",
+      "payload": {
+        "actions": {
+          "end": null,
+          "reveals": [
+            5
+          ]
+        },
+        "claimed": {
+          "mines": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
+          ],
+          "safeRevealed": 1,
+          "terminal": "auto-cashout-all-safe"
+        },
+        "fairness": {
+          "clientRandomness": "157d07708ba998e735be5ae8b200cf73a93b82e3ef07e9ae5abfe8dceda331f9",
+          "clientSeed": "Café ☕ 🎲",
+          "commitment": "c6698f9925a34a590b13b3d04345610f6d662d47a69f3d62e83b81b131f10dda",
+          "serverSeed": "df8cf4fe1ba18c3c40482b6924a464e3a7be30272a22d46af1eebb1f91d15a4f"
+        },
+        "math": {
+          "payableMultiplier": "24.7500",
+          "payout": "2.4750",
+          "preRoundingPayout": "2.47500000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000002",
+          "casinoId": "c0000000-0000-4000-8000-000000000002",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000004",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000004"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 24,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "targetInt written as 5000.0: JSON has one number type, so this is the same value as 5000 (Python must not treat it as a float)",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "evidence": "complete",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": []
+      },
+      "id": "P-37",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000.0
+        }
+      }
+    },
+    {
+      "description": "targetInt 10001 is outside 0-10000",
+      "deviceRecord": null,
+      "expected": {
+        "result": "FORMAT_ERROR"
+      },
+      "id": "P-38",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 10001
+        }
+      }
+    },
+    {
+      "description": "Device record is a JSON array: unreadable, so treated as absent",
+      "deviceRecord": [],
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "unreadable",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": []
+      },
+      "id": "P-39",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Device record is the JSON value false: unreadable",
+      "deviceRecord": false,
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "unreadable",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": []
+      },
+      "id": "P-40",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Mines record whose actions list contains null: unreadable",
+      "deviceRecord": {
+        "actions": [
+          null
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "unreadable",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [
+          1,
+          2,
+          3
+        ],
+        "witnessedSeqs": []
+      },
+      "id": "P-41",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Mines record with a reveal entry that has no tile: unreadable",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "unreadable",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [
+          1,
+          2,
+          3
+        ],
+        "witnessedSeqs": []
+      },
+      "id": "P-42",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Mines record with two entries for seq 2: unreadable",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "unreadable",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [
+          1,
+          2,
+          3
+        ],
+        "witnessedSeqs": []
+      },
+      "id": "P-43",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Record clientRandomness in uppercase hex: unreadable (a different lowercase value would be a mismatch, see P-09)",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "FFFEFDFCFBFAF9F8F7F6F5F4F3F2F1F0EFEEEDECEBEAE9E8E7E6E5E4E3E2E1E0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "unreadable",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": []
+      },
+      "id": "P-44",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Record wager has targetInt as the string \"5000\": unreadable",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": "5000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "unreadable",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": []
+      },
+      "id": "P-45",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Well-formed record holding only commitmentId: nothing to compare, so evidence none",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b"
+      },
+      "expected": {
+        "evidence": "none",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": []
+      },
+      "id": "P-46",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Unknown members in the record and its entries are ignored",
+      "deviceRecord": {
+        "actions": [
+          {
+            "ackAt": "2026-09-27T10:00:05.000Z",
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "clientBuild": "1.4.2",
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "evidence": "complete",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": [
+          1,
+          2,
+          3
+        ]
+      },
+      "id": "P-47",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "submission: null counts as absent, so the record is partial",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": null
+      },
+      "expected": {
+        "evidence": "partial",
+        "recordStatus": "used",
+        "result": "VERIFIED",
+        "unwitnessedSeqs": [],
+        "witnessedSeqs": [
+          1,
+          2,
+          3
+        ]
+      },
+      "id": "P-48",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "Well-formed record for another commitmentId: the payload is not the round this record describes",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-000000000002",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-49",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "gameId is JSON null (found by differential fuzzing; JavaScript RegExp.test would see the text \"null\")",
+      "deviceRecord": null,
+      "expected": {
+        "result": "FORMAT_ERROR"
+      },
+      "id": "P-50",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": null,
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "gameId member missing",
+      "deviceRecord": null,
+      "expected": {
+        "result": "FORMAT_ERROR"
+      },
+      "id": "P-51",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Dice payload P-01 with the Mines record of P-18: a valid record of another round is a contradiction, not unreadable",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-52",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Mines payload P-18 with the Dice record of P-01",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-53",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0,
+            1
+          ]
+        },
+        "claimed": {
+          "mines": [
+            15,
+            17,
+            24
+          ],
+          "safeRevealed": 2,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.2857",
+          "payout": "0.1285",
+          "preRoundingPayout": "0.12857000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "D-01 re-served as a self-consistent Mines round under the same commitmentId and roundId (commitment and outcome recomputed); the untouched Dice record exposes it",
+      "deviceRecord": {
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-54",
+      "payload": {
+        "actions": {
+          "end": "cashout",
+          "reveals": [
+            0
+          ]
+        },
+        "claimed": {
+          "mines": [
+            2,
+            10,
+            22
+          ],
+          "safeRevealed": 1,
+          "terminal": "cashout"
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "3ff9efa8d198a764fdf3eecddc45d6440b4e93a919f8d567fdb27ac689e5fcdc",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.1250",
+          "payout": "0.1125",
+          "preRoundingPayout": "0.11250000",
+          "result": "cashout"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "mines",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "mineCount": 3,
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "mines-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000"
+        }
+      }
+    },
+    {
+      "description": "M-01 re-served as a self-consistent Dice round under the same commitmentId and roundId; the untouched Mines record exposes it",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          },
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+        "submission": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "61c04fcf44ad067c7b316e75ceaa35608235e0ef4a57829315963cfba0b4e85b",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "mineCount": 3,
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "mines-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000"
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-55",
+      "payload": {
+        "claimed": {
+          "rollInt": 2697
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "2f9bd625d2dff624af21c044dbff9c6fc7329494d8f0d95ba4a39ff20abd62a9",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.1980",
+          "preRoundingPayout": "0.19800000",
+          "result": "win"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "The same Dice re-serving checked by a resumed device's record (no submission, actions 2-3): a Dice round has no player actions to match",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000002",
+            "seq": 2,
+            "tile": 1
+          },
+          {
+            "kind": "cashout",
+            "requestId": "e0000000-0000-4000-8000-000000000003",
+            "seq": 3
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001"
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-56",
+      "payload": {
+        "claimed": {
+          "rollInt": 2697
+        },
+        "fairness": {
+          "clientRandomness": "efe97e392ee0f804fc5250037b6c351be84a27120fe53ebb04bc71f6fafad316",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "2f9bd625d2dff624af21c044dbff9c6fc7329494d8f0d95ba4a39ff20abd62a9",
+          "serverSeed": "65b64adf9fdd55bd8255a6420a99b495fbcd99aca6ab19b8457faaadb28f8cda"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.1980",
+          "preRoundingPayout": "0.19800000",
+          "result": "win"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-200000000001",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-300000000001"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    },
+    {
+      "description": "Dice record carrying a well-formed action entry: well-formed evidence of an action the Dice payload lacks",
+      "deviceRecord": {
+        "actions": [
+          {
+            "kind": "reveal",
+            "requestId": "e0000000-0000-4000-8000-000000000001",
+            "seq": 1,
+            "tile": 0
+          }
+        ],
+        "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+        "submission": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "submittedAt": "2026-09-27T10:00:00.000Z",
+          "wager": {
+            "currency": "DEMO_USD",
+            "direction": "under",
+            "pinned": {
+              "limitsVersion": "1",
+              "mathProfileId": "dice-rtp-99",
+              "mathProfileVersion": "1.0.0"
+            },
+            "stake": "0.1000",
+            "targetInt": 5000
+          }
+        }
+      },
+      "expected": {
+        "result": "CLIENT_RECORD_MISMATCH"
+      },
+      "id": "P-57",
+      "payload": {
+        "claimed": {
+          "rollInt": 6118
+        },
+        "fairness": {
+          "clientRandomness": "fffefdfcfbfaf9f8f7f6f5f4f3f2f1f0efeeedecebeae9e8e7e6e5e4e3e2e1e0",
+          "clientSeed": "5f2c0a91e7d34b68a0c1f29e3d7b8a64",
+          "commitment": "881ac202235ce8c0bbe853ef497db3925442bf9f7c403a473905b5c8ab5ac06e",
+          "serverSeed": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+        },
+        "math": {
+          "payableMultiplier": "1.9800",
+          "payout": "0.0000",
+          "preRoundingPayout": "0.00000000",
+          "result": "loss"
+        },
+        "payloadType": "pfge-pf-verification",
+        "payloadVersion": 1,
+        "protocol": "PFGE-PF",
+        "protocolVersion": 1,
+        "round": {
+          "auditSubjectRef": "a0000000-0000-4000-8000-000000000001",
+          "casinoId": "c0000000-0000-4000-8000-000000000001",
+          "commitmentId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6b",
+          "gameId": "dice",
+          "gameVersion": "1.0.0",
+          "roundId": "0192a3b4-c5d6-7e8f-9a0b-1c2d3e4f5a6c"
+        },
+        "wager": {
+          "currency": "DEMO_USD",
+          "direction": "under",
+          "pinned": {
+            "limitsVersion": "1",
+            "mathProfileId": "dice-rtp-99",
+            "mathProfileVersion": "1.0.0"
+          },
+          "stake": "0.1000",
+          "targetInt": 5000
+        }
+      }
+    }
+  ],
+  "protocol": "PFGE-PF",
+  "protocolVersion": 1,
+  "vectorSetVersion": "1.0.0"
+}

@@ -1,0 +1,15 @@
+export type { DigestProvider } from './crypto.js';
+export { createVerifier } from './verification/verifier.js';
+export type { Verifier, VerificationResult, ResultCode } from './verification/verifier.js';
+export { parseVerificationJson } from './encoding/json.js';
+export const verifierCapabilities = Object.freeze({ verificationAvailable: true, implementation: 'deterministic-core' } as const);
+export { validateClientSeed } from './fairness/client-seed.js';
+export { approvedMathProfiles } from './math/profiles.js';
+export type { MathProfile, MathProfileRegistry } from './math/profiles.js';
+export { Rational } from './math/rational.js';
+export { parseAmount, formatAmount } from './math/amount.js';
+export { diceState, minesState, diceMaxWinOutcomes, effectiveRtp, stakeRtp, roundingLoss, payoutMath } from './math/payout.js';
+export { continuousMinimum, passesSafeguards, floorLattice, exposureMaximum } from './math/availability.js';
+export { nextAutoBetStake } from './math/auto-bet.js';
+export type { StakeDomain } from './math/availability.js';
+export type { AutoBetAction, AutoBetResult } from './math/auto-bet.js';

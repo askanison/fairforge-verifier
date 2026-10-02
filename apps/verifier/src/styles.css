@@ -1,0 +1,39 @@
+:root { font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #18342e; background: #f5f4ef; font-synthesis: none; text-rendering: optimizeLegibility; }
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 280px; }
+a { color: inherit; }
+.skip-link { position: absolute; top: -5rem; left: 1rem; padding: .8rem 1rem; background: #18342e; color: #fff; z-index: 2; }
+.skip-link:focus { top: 1rem; }
+:focus-visible { outline: 3px solid #37796a; outline-offset: 5px; }
+.shell { max-width: 1100px; margin: auto; padding: 32px 40px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 28px; border-bottom: 1px solid #d7ddd4; }
+.brand { font-weight: 750; letter-spacing: -.04em; font-size: 27px; }
+.brand-symbol { display: inline-block; color: #37796a; margin-right: 10px; }
+.context { color: #49635b; font-size: 14px; }
+main { padding: 56px 0 48px; }
+.eyebrow { text-transform: uppercase; font-size: 12px; letter-spacing: .16em; font-weight: 700; color: #49635b; }
+h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.08; letter-spacing: -.055em; max-width: 760px; margin: 18px 0 36px; }
+.status-card { max-width: 760px; background: #fff; border: 1px solid #d7ddd4; border-radius: 16px; padding: 32px; box-shadow: 0 6px 24px #18342e05; }
+.status-label { display: inline-block; padding: 6px 10px; border-radius: 6px; background: #eef2e9; font-size: 12px; font-weight: 650; }
+h2 { font-size: 23px; letter-spacing: -.025em; margin: 22px 0 12px; }
+p { line-height: 1.65; color: #49635b; margin: 0; max-width: 62ch; }
+.input-group { display: grid; gap: 12px; margin: 28px 0; min-width: 0; }
+label { font-weight: 650; font-size: 14px; }
+textarea, select, input { max-width: 100%; min-width: 0; font: inherit; color: inherit; }
+textarea, select { width: 100%; border: 1px solid #97aca2; background: #fff; border-radius: 6px; padding: 12px; }
+textarea { font: 13px/1.6 ui-monospace, monospace; resize: vertical; }
+input[type="file"] { font-size: 13px; }
+input::file-selector-button { font: inherit; padding: 8px; margin-right: 8px; border: 1px solid #97aca2; border-radius: 6px; background: #eef2e9; color: #18342e; cursor: pointer; }
+button { font: inherit; font-weight: 650; border: 0; border-radius: 6px; background: #18342e; color: #fff; padding: 14px 20px; cursor: pointer; max-width: 100%; }
+button:hover { background: #285447; }
+.help { font-size: 13px; }
+.operation-status { margin-top: 16px; font-size: 14px; min-height: 24px; }
+.result-card, .limits-card, .build-identity { max-width: 760px; margin-top: 28px; overflow-wrap: anywhere; }
+.result-card { padding: 28px 32px; border: 1px solid #97aca2; border-radius: 16px; background: #eef2e9; }
+.result-card p + p, .limits-card p + p { margin-top: 12px; }
+.evidence-list { margin: 20px 0 0; padding-left: 20px; line-height: 1.7; }
+.build-identity { border-top: 1px solid #d7ddd4; padding-top: 6px; }
+.build-identity h2 { font-size: 16px; }
+.build-identity p { font-size: 12px; }
+footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; border-top: 1px solid #d7ddd4; padding-top: 22px; color: #49635b; font-size: 12px; }
+@media (max-width: 600px) { .shell { padding: 24px; } header { align-items: flex-start; flex-direction: column; gap: 8px; } main { padding: 40px 0; } .status-card, .result-card { padding: 24px; } }

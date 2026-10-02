@@ -1,0 +1,83 @@
+name: Publish reviewed verifier to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verifier-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.repository == 'askanison/fairforge-verifier' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v6
+        with:
+          fetch-depth: 0
+      - name: Require the reviewed release tag at this exact commit
+        run: test "$(git rev-parse 'refs/tags/v0.1.0^{commit}')" = "$GITHUB_SHA"
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v6
+        with:
+          node-version: 26.10.0
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npm run typecheck
+      - run: npm run build
+      - run: npm run check:pack
+      - run: node --test scripts/frontend-pack.test.mjs
+      - name: Bind the deployed assets to source and preserve the version URL
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, readdirSync, lstatSync, writeFileSync, mkdirSync, cpSync } from 'node:fs';
+          import { createHash } from 'node:crypto';
+          const source = JSON.parse(readFileSync('source-receipt.json', 'utf8'));
+          const identity = JSON.parse(readFileSync('apps/verifier/dist/build-identity.json', 'utf8'));
+          if (source.dirty || source.packageVersion !== '0.1.0' ||
+              JSON.stringify(identity) !== JSON.stringify({sourceCommit: source.sourceCommit, dirty: false, packageVersion: '0.1.0'}))
+            throw new Error('Release source/build identity mismatch');
+          const artifacts = {};
+          function visit(dir, prefix = '') {
+            for (const name of readdirSync(dir).sort()) {
+              const path = dir + '/' + name, relative = prefix + name;
+              const entry = lstatSync(path);
+              if (entry.isSymbolicLink()) throw new Error('Distribution symlink');
+              if (entry.isDirectory()) visit(path, relative + '/');
+              else if (entry.isFile()) artifacts[relative] = createHash('sha256').update(readFileSync(path)).digest('hex');
+              else throw new Error('Invalid distribution entry');
+            }
+          }
+          visit('apps/verifier/dist');
+          const release = {format: 'fairforge-public-deployment-v1', packageVersion: '0.1.0',
+            publicTag: 'v0.1.0', publicCommit: process.env.GITHUB_SHA,
+            sourceContentSha256: source.contentSha256, buildIdentity: identity, artifacts,
+            workflowRun: process.env.GITHUB_RUN_ID, workflowAttempt: process.env.GITHUB_RUN_ATTEMPT};
+          writeFileSync('apps/verifier/dist/release-manifest.json', JSON.stringify(release, null, 2) + '\n');
+          mkdirSync('public-site/versions', {recursive: true});
+          cpSync('apps/verifier/dist', 'public-site', {recursive: true});
+          cpSync('apps/verifier/dist', 'public-site/versions/v0.1.0', {recursive: true});
+          NODE
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: public-site
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the tested Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
